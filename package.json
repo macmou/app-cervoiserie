@@ -17,9 +17,16 @@
   },
   "homepage": "https://github.com/macmou/app-cervoiserie#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
-    "mongoose": "^5.4.6"
+    "jsonwebtoken": "^8.4.0",
+    "method-override": "^2.3.6",
+    "mongoose": "^5.4.6",
+    "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0"
   }
 }
