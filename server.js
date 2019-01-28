@@ -6,7 +6,7 @@ const methodOverride = require('method-override');
 const product = require('./routes/product.route');
 var cors = require('cors');
 
-const util = require('util');
+//const util = require('util');
 
 
 // initialize our express app
@@ -106,8 +106,6 @@ var Scores = mongoose.model('Scores', {
     // Get events
     app.get('/api/events', function(req, res) {
  
-        console.log("fetching events");
- 
         // use mongoose to get all reviews in the database
         Events.find(function(err, events) {
  
@@ -121,8 +119,6 @@ var Scores = mongoose.model('Scores', {
  
     // Get villes
     app.get('/api/villes', function(req, res) {
- 
-        console.log("fetching villes");
  
         // use mongoose to get all villes in the database
         Villes.find(function(err, villes) {
@@ -170,8 +166,6 @@ var Scores = mongoose.model('Scores', {
     // Post bières
     app.post('/api/bieres', function(req, res) {
 
-        
-        console.log("OK 4 "+util.inspect(req.body.params.pays, false, null));
         Bieres.find({"pays":req.body.params.pays},function(err, bieres) {
             if (err)
                 res.send(err)
@@ -194,8 +188,6 @@ var Scores = mongoose.model('Scores', {
 	// Get commentaires
     app.get('/api/commentaires', function(req, res) {
  
-        console.log("fetching commentaires");
- 
         // use mongoose to get all reviews in the database
         Commentaires.find(function(err, commentaires) {
  
@@ -210,8 +202,6 @@ var Scores = mongoose.model('Scores', {
 	// Get scores
     app.get('/api/scores', function(req, res) {
  
-        console.log("fetching scores");
- 
         // use mongoose to get all reviews in the database
         Scores.find(function(err, scores) {
  
@@ -225,8 +215,6 @@ var Scores = mongoose.model('Scores', {
 
 	// add score
     app.post('/api/scores', function(req, res) {
- 
-        console.log("creating score " + util.inspect(req.body));
  
         // create a review, information comes from request from Ionic
         Scores.create({
@@ -250,8 +238,6 @@ var Scores = mongoose.model('Scores', {
 	// update scores
 	app.put('/api/scores', function(req, res) {
 
-        console.log("villePUT " + util.inspect(req.body));
-
         Scores.findOneAndUpdate(
             { user : req.body.user }, 
             { $set: { score:req.body.score } }, 
@@ -269,8 +255,6 @@ var Scores = mongoose.model('Scores', {
 
 	// update commantaire
 	app.put('/api/commentaires', function(req, res) {
-
-        console.log("commentaires " + util.inspect(req.body));
 
         Commentaires.findOneAndUpdate(
             { _id : req.body._id }, 
@@ -290,8 +274,6 @@ var Scores = mongoose.model('Scores', {
 
 	// add commentaires
 	app.post('/api/commentaires', function(req, res) {
- 
-        console.log("creating commentaires " + util.inspect(req.body));
  
         // create a review, information comes from request from Ionic
         Commentaires.create({
@@ -318,8 +300,6 @@ var Scores = mongoose.model('Scores', {
 	// update bieres
     app.put('/api/bieres', function(req, res) {
 
-        console.log("bierePUT " + util.inspect(req.body));
-
         Bieres.findOneAndUpdate(
             { _id : req.body._id }, 
             { $set: { favoris:req.body.favoris }}, 
@@ -338,8 +318,6 @@ var Scores = mongoose.model('Scores', {
     // update pays
     app.put('/api/pays', function(req, res) {
 
-        console.log("paysPUT " + util.inspect(req.body));
-
         Pays.findOneAndUpdate(
             { pays : req.body.pays }, 
             { $set: { favoris:req.body.favoris }}, 
@@ -357,8 +335,6 @@ var Scores = mongoose.model('Scores', {
 
     // update ville
     app.put('/api/villes', function(req, res) {
-
-        console.log("villePUT " + util.inspect(req.body));
 
         Villes.findOneAndUpdate(
             { _id : req.body._id }, 
