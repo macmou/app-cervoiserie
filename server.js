@@ -49,7 +49,7 @@ app.get('/api/protected', requireAuth, function(req, res){
 
 
 // Models
-var Villes = mongoose.model('Villes', {
+var Villles = mongoose.model('Villles', {
     id: String,
     ville: String,
     avatar: String,
@@ -118,16 +118,16 @@ var Scores = mongoose.model('Scores', {
     });
  
     // Get villes
-    app.get('/api/villes', function(req, res) {
+    app.get('/api/villles', function(req, res) {
  
         // use mongoose to get all villes in the database
-        Villes.find(function(err, villes) {
+        Villles.find(function(err, villles) {
  
             // if there is an error retrieving, send the error. nothing after res.send(err) will execute
             if (err)
                 res.send(err)
  
-            res.json(villes); // return all reviews in JSON format
+            res.json(villles); // return all reviews in JSON format
         });
     });
 
@@ -334,19 +334,19 @@ var Scores = mongoose.model('Scores', {
     });
 
     // update ville
-    app.put('/api/villes', function(req, res) {
+    app.put('/api/villles', function(req, res) {
 
-        Villes.findOneAndUpdate(
+        Villles.findOneAndUpdate(
             { _id : req.body._id }, 
             { $set: { favoris:req.body.favoris } }, 
             function (err, post) {
                 if (err)
                 res.send(err);
  
-                Villes.find(function(err, villes) {
+                Villles.find(function(err, villles) {
                     if (err)
                         res.send(err)
-                    res.json(villes);
+                    res.json(villles);
                 });
           });
     });
