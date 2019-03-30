@@ -28,12 +28,14 @@ app.use(methodOverride());
 app.use(cors());
 app.use('/products', product);
 
-app.use(function(req, res, next) {
-   /*res.header("Access-Control-Allow-Origin", "*");
+/*app.use(function(req, res, next) {
+   res.header("Access-Control-Allow-Origin", "*");
    res.header('Access-Control-Allow-Methods', 'DELETE, PUT');
    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-   next();*/
-	app.use(function (req, res, next) {
+   next();
+	
+});*/
+app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -50,7 +52,6 @@ app.use(function(req, res, next) {
 
     // Pass to next layer of middleware
     next();
-});
 });
 
 var AuthenticationController = require('./app/controllers/authentication');
